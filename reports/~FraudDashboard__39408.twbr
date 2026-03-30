@@ -1,0 +1,2160 @@
+<?xml version='1.0' encoding='utf-8' ?>
+
+<!-- build 20252.25.0818.1050                               -->
+<workbook original-version='18.1' source-build='2025.2.2 (20252.25.0818.1050)' source-platform='win' version='18.1' xmlns:user='http://www.tableausoftware.com/xml/user'>
+  <document-format-change-manifest>
+    <AccessibleZoneTabOrder />
+    <AnimationOnByDefault />
+    <AutoCreateAndUpdateDSDPhoneLayouts />
+    <MapboxVectorStylesAndLayers />
+    <MarkAnimation />
+    <ObjectModelEncapsulateLegacy />
+    <ObjectModelExtractV2 />
+    <ObjectModelTableType />
+    <SchemaViewerObjectModel />
+    <SetMembershipControl />
+    <SheetIdentifierTracking />
+    <SortTagCleanup />
+    <_.fcp.VConnDownstreamExtractsWithWarnings.true...VConnDownstreamExtractsWithWarnings />
+    <WindowsPersistSimpleIdentifiers />
+  </document-format-change-manifest>
+  <preferences>
+    <preference name='ui.encoding.shelf.height' value='24' />
+    <preference name='ui.shelf.height' value='26' />
+  </preferences>
+  <datasources>
+    <datasource caption='Transactions Data Source' inline='true' name='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='transactions_data' name='textscan.0nykyb30z15y8312w742e1mi4zdm'>
+            <connection class='textscan' directory='C:/Users/pablo/OneDrive/Documentos/Projects/FraudDetection/data' filename='transactions_data.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation type='collection'>
+          <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='transactions_data.csv' table='[transactions_data#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES'>
+              <column datatype='integer' name='id' ordinal='0' />
+              <column datatype='datetime' name='date' ordinal='1' />
+              <column datatype='integer' name='client_id' ordinal='2' />
+              <column datatype='integer' name='card_id' ordinal='3' />
+              <column datatype='string' name='amount' ordinal='4' />
+              <column datatype='string' name='use_chip' ordinal='5' />
+              <column datatype='integer' name='merchant_id' ordinal='6' />
+              <column datatype='string' name='merchant_city' ordinal='7' />
+              <column datatype='string' name='merchant_state' ordinal='8' />
+              <column datatype='string' name='zip' ordinal='9' />
+              <column datatype='integer' name='mcc' ordinal='10' />
+              <column datatype='string' name='errors' ordinal='11' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='binary_train_labels.csv' table='[binary_train_labels#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES'>
+              <column datatype='integer' name='F1' ordinal='0' />
+              <column datatype='integer' name='target' ordinal='1' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='cards_data.csv' table='[cards_data#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES'>
+              <column datatype='integer' name='id' ordinal='0' />
+              <column datatype='integer' name='client_id' ordinal='1' />
+              <column datatype='string' name='card_brand' ordinal='2' />
+              <column datatype='string' name='card_type' ordinal='3' />
+              <column datatype='integer' name='card_number' ordinal='4' />
+              <column datatype='string' name='expires' ordinal='5' />
+              <column datatype='integer' name='cvv' ordinal='6' />
+              <column datatype='string' name='has_chip' ordinal='7' />
+              <column datatype='integer' name='num_cards_issued' ordinal='8' />
+              <column datatype='string' name='credit_limit' ordinal='9' />
+              <column datatype='string' name='acct_open_date' ordinal='10' />
+              <column datatype='integer' name='year_pin_last_changed' ordinal='11' />
+              <column datatype='string' name='card_on_dark_web' ordinal='12' />
+            </columns>
+          </relation>
+          <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='users_data.csv' table='[users_data#csv]' type='table'>
+            <columns character-set='UTF-8' header='yes' locale='es_ES'>
+              <column datatype='integer' name='id' ordinal='0' />
+              <column datatype='integer' name='current_age' ordinal='1' />
+              <column datatype='integer' name='retirement_age' ordinal='2' />
+              <column datatype='integer' name='birth_year' ordinal='3' />
+              <column datatype='integer' name='birth_month' ordinal='4' />
+              <column datatype='string' name='gender' ordinal='5' />
+              <column datatype='string' name='address' ordinal='6' />
+              <column datatype='string' name='latitude' ordinal='7' />
+              <column datatype='string' name='longitude' ordinal='8' />
+              <column datatype='string' name='per_capita_income' ordinal='9' />
+              <column datatype='string' name='yearly_income' ordinal='10' />
+              <column datatype='string' name='total_debt' ordinal='11' />
+              <column datatype='integer' name='credit_score' ordinal='12' />
+              <column datatype='integer' name='num_credit_cards' ordinal='13' />
+            </columns>
+          </relation>
+        </relation>
+        <cols>
+          <map key='[F1]' value='[binary_train_labels.csv].[F1]' />
+          <map key='[acct_open_date]' value='[cards_data.csv].[acct_open_date]' />
+          <map key='[address]' value='[users_data.csv].[address]' />
+          <map key='[amount]' value='[transactions_data.csv].[amount]' />
+          <map key='[birth_month]' value='[users_data.csv].[birth_month]' />
+          <map key='[birth_year]' value='[users_data.csv].[birth_year]' />
+          <map key='[card_brand]' value='[cards_data.csv].[card_brand]' />
+          <map key='[card_id]' value='[transactions_data.csv].[card_id]' />
+          <map key='[card_number]' value='[cards_data.csv].[card_number]' />
+          <map key='[card_on_dark_web]' value='[cards_data.csv].[card_on_dark_web]' />
+          <map key='[card_type]' value='[cards_data.csv].[card_type]' />
+          <map key='[client_id (cards_data.csv)]' value='[cards_data.csv].[client_id]' />
+          <map key='[client_id]' value='[transactions_data.csv].[client_id]' />
+          <map key='[credit_limit]' value='[cards_data.csv].[credit_limit]' />
+          <map key='[credit_score]' value='[users_data.csv].[credit_score]' />
+          <map key='[current_age]' value='[users_data.csv].[current_age]' />
+          <map key='[cvv]' value='[cards_data.csv].[cvv]' />
+          <map key='[date]' value='[transactions_data.csv].[date]' />
+          <map key='[errors]' value='[transactions_data.csv].[errors]' />
+          <map key='[expires]' value='[cards_data.csv].[expires]' />
+          <map key='[gender]' value='[users_data.csv].[gender]' />
+          <map key='[has_chip]' value='[cards_data.csv].[has_chip]' />
+          <map key='[id (cards_data.csv)]' value='[cards_data.csv].[id]' />
+          <map key='[id (users_data.csv)]' value='[users_data.csv].[id]' />
+          <map key='[id]' value='[transactions_data.csv].[id]' />
+          <map key='[latitude]' value='[users_data.csv].[latitude]' />
+          <map key='[longitude]' value='[users_data.csv].[longitude]' />
+          <map key='[mcc]' value='[transactions_data.csv].[mcc]' />
+          <map key='[merchant_city]' value='[transactions_data.csv].[merchant_city]' />
+          <map key='[merchant_id]' value='[transactions_data.csv].[merchant_id]' />
+          <map key='[merchant_state]' value='[transactions_data.csv].[merchant_state]' />
+          <map key='[num_cards_issued]' value='[cards_data.csv].[num_cards_issued]' />
+          <map key='[num_credit_cards]' value='[users_data.csv].[num_credit_cards]' />
+          <map key='[per_capita_income]' value='[users_data.csv].[per_capita_income]' />
+          <map key='[retirement_age]' value='[users_data.csv].[retirement_age]' />
+          <map key='[target]' value='[binary_train_labels.csv].[target]' />
+          <map key='[total_debt]' value='[users_data.csv].[total_debt]' />
+          <map key='[use_chip]' value='[transactions_data.csv].[use_chip]' />
+          <map key='[year_pin_last_changed]' value='[cards_data.csv].[year_pin_last_changed]' />
+          <map key='[yearly_income]' value='[users_data.csv].[yearly_income]' />
+          <map key='[zip]' value='[transactions_data.csv].[zip]' />
+        </cols>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[binary_train_labels.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>date</remote-name>
+            <remote-type>135</remote-type>
+            <local-name>[date]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>date</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>datetime</local-type>
+            <aggregation>Year</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>2</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>card_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[card_id]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>card_id</remote-alias>
+            <ordinal>3</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>amount</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[amount]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>amount</remote-alias>
+            <ordinal>4</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>use_chip</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[use_chip]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>use_chip</remote-alias>
+            <ordinal>5</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>merchant_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[merchant_id]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>merchant_id</remote-alias>
+            <ordinal>6</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>merchant_city</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[merchant_city]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>merchant_city</remote-alias>
+            <ordinal>7</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>merchant_state</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[merchant_state]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>merchant_state</remote-alias>
+            <ordinal>8</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>zip</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[zip]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>zip</remote-alias>
+            <ordinal>9</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mcc</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[mcc]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>mcc</remote-alias>
+            <ordinal>10</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>errors</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[errors]</local-name>
+            <parent-name>[transactions_data.csv]</parent-name>
+            <remote-alias>errors</remote-alias>
+            <ordinal>11</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>F1</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[F1]</local-name>
+            <parent-name>[binary_train_labels.csv]</parent-name>
+            <remote-alias>F1</remote-alias>
+            <ordinal>12</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>target</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[target]</local-name>
+            <parent-name>[binary_train_labels.csv]</parent-name>
+            <remote-alias>target</remote-alias>
+            <ordinal>13</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (cards_data.csv)]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>14</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>client_id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[client_id (cards_data.csv)]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>client_id</remote-alias>
+            <ordinal>15</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>card_brand</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[card_brand]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>card_brand</remote-alias>
+            <ordinal>16</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>card_type</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[card_type]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>card_type</remote-alias>
+            <ordinal>17</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>card_number</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[card_number]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>card_number</remote-alias>
+            <ordinal>18</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>expires</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[expires]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>expires</remote-alias>
+            <ordinal>19</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>cvv</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[cvv]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>cvv</remote-alias>
+            <ordinal>20</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>has_chip</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[has_chip]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>has_chip</remote-alias>
+            <ordinal>21</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_cards_issued</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_cards_issued]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>num_cards_issued</remote-alias>
+            <ordinal>22</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>credit_limit</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[credit_limit]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>credit_limit</remote-alias>
+            <ordinal>23</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>acct_open_date</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[acct_open_date]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>acct_open_date</remote-alias>
+            <ordinal>24</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>year_pin_last_changed</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[year_pin_last_changed]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>year_pin_last_changed</remote-alias>
+            <ordinal>25</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>card_on_dark_web</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[card_on_dark_web]</local-name>
+            <parent-name>[cards_data.csv]</parent-name>
+            <remote-alias>card_on_dark_web</remote-alias>
+            <ordinal>26</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>id</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[id (users_data.csv)]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>id</remote-alias>
+            <ordinal>27</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>current_age</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[current_age]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>current_age</remote-alias>
+            <ordinal>28</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>retirement_age</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[retirement_age]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>retirement_age</remote-alias>
+            <ordinal>29</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>birth_year</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[birth_year]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>birth_year</remote-alias>
+            <ordinal>30</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>birth_month</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[birth_month]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>birth_month</remote-alias>
+            <ordinal>31</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>gender</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[gender]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>gender</remote-alias>
+            <ordinal>32</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>address</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[address]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>address</remote-alias>
+            <ordinal>33</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>latitude</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[latitude]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>latitude</remote-alias>
+            <ordinal>34</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>longitude</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[longitude]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>longitude</remote-alias>
+            <ordinal>35</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>per_capita_income</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[per_capita_income]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>per_capita_income</remote-alias>
+            <ordinal>36</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>yearly_income</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[yearly_income]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>yearly_income</remote-alias>
+            <ordinal>37</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>total_debt</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[total_debt]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>total_debt</remote-alias>
+            <ordinal>38</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>credit_score</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[credit_score]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>credit_score</remote-alias>
+            <ordinal>39</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>num_credit_cards</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[num_credit_cards]</local-name>
+            <parent-name>[users_data.csv]</parent-name>
+            <remote-alias>num_credit_cards</remote-alias>
+            <ordinal>40</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='Numeric_Amount' datatype='real' name='[Calculation_2744662551174823936]' role='measure' type='quantitative'>
+        <calculation class='tableau' formula='FLOAT(REPLACE(REPLACE([amount], &quot;$&quot;, &quot;&quot;), &quot;,&quot;, &quot;&quot;))' />
+      </column>
+      <column aggregation='Count' datatype='integer' datatype-customized='true' name='[F1]' role='measure' type='quantitative' />
+      <column caption='Fraud_Labels' datatype='table' name='[__tableau_internal_object_id__].[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]' role='measure' type='quantitative' />
+      <column caption='Cards' datatype='table' name='[__tableau_internal_object_id__].[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]' role='measure' type='quantitative' />
+      <column caption='Transactions' datatype='table' name='[__tableau_internal_object_id__].[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]' role='measure' type='quantitative' />
+      <column caption='Users' datatype='table' name='[__tableau_internal_object_id__].[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]' role='measure' type='quantitative' />
+      <column caption='Acct Open Date' datatype='string' name='[acct_open_date]' role='dimension' type='nominal' />
+      <column caption='Address' datatype='string' name='[address]' role='dimension' type='nominal' />
+      <column caption='Amount' datatype='string' name='[amount]' role='dimension' type='nominal' />
+      <column caption='Birth Month' datatype='integer' name='[birth_month]' role='dimension' type='quantitative' />
+      <column caption='Birth Year' datatype='integer' name='[birth_year]' role='dimension' type='quantitative' />
+      <column caption='Card Brand' datatype='string' name='[card_brand]' role='dimension' type='nominal' />
+      <column caption='Card Id' datatype='integer' name='[card_id]' role='dimension' type='ordinal' />
+      <column caption='Card Number' datatype='integer' name='[card_number]' role='dimension' type='ordinal' />
+      <column caption='Card On Dark Web' datatype='string' name='[card_on_dark_web]' role='dimension' type='nominal' />
+      <column caption='Card Type' datatype='string' name='[card_type]' role='dimension' type='nominal' />
+      <column caption='Client Id (Cards Data.Csv)' datatype='integer' name='[client_id (cards_data.csv)]' role='dimension' type='ordinal' />
+      <column caption='Client Id' datatype='integer' name='[client_id]' role='dimension' type='ordinal' />
+      <column caption='Credit Limit' datatype='string' name='[credit_limit]' role='dimension' type='nominal' />
+      <column caption='Credit Score' datatype='integer' name='[credit_score]' role='measure' type='quantitative' />
+      <column caption='Current Age' datatype='integer' name='[current_age]' role='measure' type='quantitative' />
+      <column caption='Cvv' datatype='integer' name='[cvv]' role='measure' type='quantitative' />
+      <column caption='Date' datatype='datetime' name='[date]' role='dimension' type='ordinal' />
+      <column caption='Errors' datatype='string' name='[errors]' role='dimension' type='nominal' />
+      <column caption='Expires' datatype='string' name='[expires]' role='dimension' type='nominal' />
+      <column caption='Gender' datatype='string' name='[gender]' role='dimension' type='nominal' />
+      <column caption='Has Chip' datatype='string' name='[has_chip]' role='dimension' type='nominal' />
+      <column caption='Id (Cards Data.Csv)' datatype='integer' name='[id (cards_data.csv)]' role='dimension' type='ordinal' />
+      <column caption='Id (Users Data.Csv)' datatype='integer' name='[id (users_data.csv)]' role='dimension' type='ordinal' />
+      <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+      <column caption='Latitude' datatype='string' name='[latitude]' role='dimension' type='nominal' />
+      <column caption='Longitude' datatype='string' name='[longitude]' role='dimension' type='nominal' />
+      <column caption='Mcc' datatype='integer' name='[mcc]' role='dimension' type='ordinal' />
+      <column caption='Merchant City' datatype='string' name='[merchant_city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+      <column caption='Merchant Id' datatype='integer' name='[merchant_id]' role='dimension' type='ordinal' />
+      <column caption='Merchant State' datatype='string' name='[merchant_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+      <column caption='Num Cards Issued' datatype='integer' name='[num_cards_issued]' role='measure' type='quantitative' />
+      <column caption='Num Credit Cards' datatype='integer' name='[num_credit_cards]' role='measure' type='quantitative' />
+      <column caption='Per Capita Income' datatype='string' name='[per_capita_income]' role='dimension' type='nominal' />
+      <column caption='Retirement Age' datatype='integer' name='[retirement_age]' role='measure' type='quantitative' />
+      <column caption='Target' datatype='integer' name='[target]' role='measure' type='quantitative' />
+      <column caption='Total Debt' datatype='string' name='[total_debt]' role='dimension' type='nominal' />
+      <column caption='Use Chip' datatype='string' name='[use_chip]' role='dimension' type='nominal' />
+      <column caption='Year Pin Last Changed' datatype='integer' name='[year_pin_last_changed]' role='dimension' type='quantitative' />
+      <column caption='Yearly Income' datatype='string' name='[yearly_income]' role='dimension' type='nominal' />
+      <column caption='Zip' datatype='string' name='[zip]' role='dimension' semantic-role='[ZipCode].[Name]' type='nominal' />
+      <column-instance column='[F1]' derivation='Count' name='[cnt:F1:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[id]' derivation='Count' name='[cnt:id:qk]' pivot='key' type='quantitative' />
+      <column-instance column='[target]' derivation='Sum' name='[sum:target:qk]' pivot='key' type='quantitative' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='true' object-id='' units='records'>
+        <connection access_mode='readonly' authentication='auth-none' author-locale='es_ES' class='hyper' dbname='C:/Users/pablo/AppData/Local/Temp/TableauTemp/#TableauTemp_02j53a718zgy9i1djoycd02zxbfl.hyper' default-settings='yes' schema='Extract' sslmode='' update-time='03/29/2026 09:39:52 PM' username='tableau_internal_user'>
+          <relation type='collection'>
+            <relation name='transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119' table='[Extract].[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]' type='table' />
+            <relation name='binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE' table='[Extract].[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]' type='table' />
+            <relation name='cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1' table='[Extract].[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]' type='table' />
+            <relation name='users_data.csv_A04789C037FB4369B2F7E26C7A01C308' table='[Extract].[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]' type='table' />
+          </relation>
+          <cols>
+            <map key='[F1]' value='[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE].[F1]' />
+            <map key='[acct_open_date]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[acct_open_date]' />
+            <map key='[address]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[address]' />
+            <map key='[amount]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[amount]' />
+            <map key='[birth_month]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[birth_month]' />
+            <map key='[birth_year]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[birth_year]' />
+            <map key='[card_brand]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[card_brand]' />
+            <map key='[card_id]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[card_id]' />
+            <map key='[card_number]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[card_number]' />
+            <map key='[card_on_dark_web]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[card_on_dark_web]' />
+            <map key='[card_type]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[card_type]' />
+            <map key='[client_id (cards_data.csv)]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[client_id]' />
+            <map key='[client_id]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[client_id]' />
+            <map key='[credit_limit]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[credit_limit]' />
+            <map key='[credit_score]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[credit_score]' />
+            <map key='[current_age]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[current_age]' />
+            <map key='[cvv]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[cvv]' />
+            <map key='[date]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[date]' />
+            <map key='[errors]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[errors]' />
+            <map key='[expires]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[expires]' />
+            <map key='[gender]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[gender]' />
+            <map key='[has_chip]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[has_chip]' />
+            <map key='[id (cards_data.csv)]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[id]' />
+            <map key='[id (users_data.csv)]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[id]' />
+            <map key='[id]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[id]' />
+            <map key='[latitude]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[latitude]' />
+            <map key='[longitude]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[longitude]' />
+            <map key='[mcc]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[mcc]' />
+            <map key='[merchant_city]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[merchant_city]' />
+            <map key='[merchant_id]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[merchant_id]' />
+            <map key='[merchant_state]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[merchant_state]' />
+            <map key='[num_cards_issued]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[num_cards_issued]' />
+            <map key='[num_credit_cards]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[num_credit_cards]' />
+            <map key='[per_capita_income]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[per_capita_income]' />
+            <map key='[retirement_age]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[retirement_age]' />
+            <map key='[target]' value='[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE].[target]' />
+            <map key='[total_debt]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[total_debt]' />
+            <map key='[use_chip]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[use_chip]' />
+            <map key='[year_pin_last_changed]' value='[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1].[year_pin_last_changed]' />
+            <map key='[yearly_income]' value='[users_data.csv_A04789C037FB4369B2F7E26C7A01C308].[yearly_income]' />
+            <map key='[zip]' value='[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119].[zip]' />
+          </cols>
+          <refresh>
+            <refresh-event add-from-file-path='Transactions Data Source' increment-value='%null%' refresh-type='create' rows-inserted='22229024' timestamp-start='2026-03-29 21:36:28.799' />
+          </refresh>
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>0</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>13305915</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>date</remote-name>
+              <remote-type>135</remote-type>
+              <local-name>[date]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>date</remote-alias>
+              <ordinal>1</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>datetime</local-type>
+              <aggregation>Year</aggregation>
+              <approx-count>7181267</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>client_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[client_id]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>client_id</remote-alias>
+              <ordinal>2</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1219</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>card_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[card_id]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>card_id</remote-alias>
+              <ordinal>3</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>5373</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>amount</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[amount]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>amount</remote-alias>
+              <ordinal>4</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>79155</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>use_chip</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[use_chip]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>use_chip</remote-alias>
+              <ordinal>5</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>merchant_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[merchant_id]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>merchant_id</remote-alias>
+              <ordinal>6</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>71340</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>merchant_city</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[merchant_city]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>merchant_city</remote-alias>
+              <ordinal>7</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>19668</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>merchant_state</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[merchant_state]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>merchant_state</remote-alias>
+              <ordinal>8</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>107</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>zip</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[zip]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>zip</remote-alias>
+              <ordinal>9</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>44567</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>mcc</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[mcc]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>mcc</remote-alias>
+              <ordinal>10</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>139</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>errors</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[errors]</local-name>
+              <parent-name>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</parent-name>
+              <remote-alias>errors</remote-alias>
+              <ordinal>11</ordinal>
+              <family>transactions_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>10</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>F1</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[F1]</local-name>
+              <parent-name>[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]</parent-name>
+              <remote-alias>F1</remote-alias>
+              <ordinal>12</ordinal>
+              <family>binary_train_labels.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>8914963</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>target</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[target]</local-name>
+              <parent-name>[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]</parent-name>
+              <remote-alias>target</remote-alias>
+              <ordinal>13</ordinal>
+              <family>binary_train_labels.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id (cards_data.csv)]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>14</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6146</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>client_id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[client_id (cards_data.csv)]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>client_id</remote-alias>
+              <ordinal>15</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1807</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>card_brand</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[card_brand]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>card_brand</remote-alias>
+              <ordinal>16</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>4</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>card_type</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[card_type]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>card_type</remote-alias>
+              <ordinal>17</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>card_number</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[card_number]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>card_number</remote-alias>
+              <ordinal>18</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>6146</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>expires</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[expires]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>expires</remote-alias>
+              <ordinal>19</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>273</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>cvv</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[cvv]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>cvv</remote-alias>
+              <ordinal>20</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>1212</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>has_chip</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[has_chip]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>has_chip</remote-alias>
+              <ordinal>21</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>num_cards_issued</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[num_cards_issued]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>num_cards_issued</remote-alias>
+              <ordinal>22</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>3</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>credit_limit</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[credit_limit]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>credit_limit</remote-alias>
+              <ordinal>23</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1900</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>acct_open_date</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[acct_open_date]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>acct_open_date</remote-alias>
+              <ordinal>24</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>324</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>year_pin_last_changed</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[year_pin_last_changed]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>year_pin_last_changed</remote-alias>
+              <ordinal>25</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>21</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>card_on_dark_web</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[card_on_dark_web]</local-name>
+              <parent-name>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</parent-name>
+              <remote-alias>card_on_dark_web</remote-alias>
+              <ordinal>26</ordinal>
+              <family>cards_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>id</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[id (users_data.csv)]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>id</remote-alias>
+              <ordinal>27</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>2000</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>current_age</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[current_age]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>current_age</remote-alias>
+              <ordinal>28</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>78</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>retirement_age</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[retirement_age]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>retirement_age</remote-alias>
+              <ordinal>29</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>29</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>birth_year</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[birth_year]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>birth_year</remote-alias>
+              <ordinal>30</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>79</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>birth_month</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[birth_month]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>birth_month</remote-alias>
+              <ordinal>31</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>12</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>gender</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[gender]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>gender</remote-alias>
+              <ordinal>32</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>address</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[address]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>address</remote-alias>
+              <ordinal>33</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>2000</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>latitude</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[latitude]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>latitude</remote-alias>
+              <ordinal>34</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>835</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>longitude</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[longitude]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>longitude</remote-alias>
+              <ordinal>35</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>997</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>per_capita_income</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[per_capita_income]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>per_capita_income</remote-alias>
+              <ordinal>36</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1411</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>yearly_income</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[yearly_income]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>yearly_income</remote-alias>
+              <ordinal>37</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1609</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>total_debt</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[total_debt]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>total_debt</remote-alias>
+              <ordinal>38</ordinal>
+              <family>users_data.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>1836</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>credit_score</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[credit_score]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>credit_score</remote-alias>
+              <ordinal>39</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>314</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>num_credit_cards</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[num_credit_cards]</local-name>
+              <parent-name>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</parent-name>
+              <remote-alias>num_credit_cards</remote-alias>
+              <ordinal>40</ordinal>
+              <family>users_data.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>9</approx-count>
+              <contains-null>true</contains-null>
+              <object-id>[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]</object-id>
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' rowDisplayCount='1000' show-structure='true' />
+      <style>
+        <style-rule element='mark'>
+          <encoding attr='color' field='[:Measure Names]' palette='blue_10_0' type='palette'>
+            <map to='#10b981'>
+              <bucket>&quot;[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[usr:Calculation_2744662551987933186:qk]&quot;</bucket>
+            </map>
+            <map to='#2563eb'>
+              <bucket>&quot;[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[cnt:id:qk]&quot;</bucket>
+            </map>
+            <map to='#4e79a7'>
+              <bucket>&quot;[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[cnt:F1:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[sum:target:qk]&quot;</bucket>
+            </map>
+            <map to='#f28e2b'>
+              <bucket>&quot;[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[usr:Calculation_2744662551987855361:qk]&quot;</bucket>
+            </map>
+          </encoding>
+        </style-rule>
+      </style>
+      <semantic-values>
+        <semantic-value key='[City].[Name]' value='%null%' />
+        <semantic-value key='[Country].[Name]' value='&quot;Estados Unidos&quot;' />
+        <semantic-value key='[State].[Name]' value='%null%' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <field-sort-info field-sort-order-type='custom-order'>
+        <field-sort-custom-order field='id' />
+        <field-sort-custom-order field='date' />
+        <field-sort-custom-order field='client_id' />
+        <field-sort-custom-order field='card_id' />
+        <field-sort-custom-order field='amount' />
+        <field-sort-custom-order field='Calculation_2744662551174823936' />
+        <field-sort-custom-order field='use_chip' />
+        <field-sort-custom-order field='merchant_id' />
+        <field-sort-custom-order field='merchant_city' />
+        <field-sort-custom-order field='merchant_state' />
+        <field-sort-custom-order field='zip' />
+        <field-sort-custom-order field='mcc' />
+        <field-sort-custom-order field='errors' />
+      </field-sort-info>
+      <filter class='quantitative' column='[Calculation_2744662551174823936]' filter-group='2' included-values='in-range'>
+        <min>1.0</min>
+      </filter>
+      <object-graph>
+        <objects>
+          <object caption='Fraud_Labels' id='binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE'>
+            <properties context=''>
+              <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='binary_train_labels.csv' table='[binary_train_labels#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES'>
+                  <column datatype='integer' name='F1' ordinal='0' />
+                  <column datatype='integer' name='target' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE' table='[Extract].[binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE]' type='table' />
+            </properties>
+          </object>
+          <object caption='Cards' id='cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1'>
+            <properties context=''>
+              <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='cards_data.csv' table='[cards_data#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES'>
+                  <column datatype='integer' name='id' ordinal='0' />
+                  <column datatype='integer' name='client_id' ordinal='1' />
+                  <column datatype='string' name='card_brand' ordinal='2' />
+                  <column datatype='string' name='card_type' ordinal='3' />
+                  <column datatype='integer' name='card_number' ordinal='4' />
+                  <column datatype='string' name='expires' ordinal='5' />
+                  <column datatype='integer' name='cvv' ordinal='6' />
+                  <column datatype='string' name='has_chip' ordinal='7' />
+                  <column datatype='integer' name='num_cards_issued' ordinal='8' />
+                  <column datatype='string' name='credit_limit' ordinal='9' />
+                  <column datatype='string' name='acct_open_date' ordinal='10' />
+                  <column datatype='integer' name='year_pin_last_changed' ordinal='11' />
+                  <column datatype='string' name='card_on_dark_web' ordinal='12' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1' table='[Extract].[cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1]' type='table' />
+            </properties>
+          </object>
+          <object caption='Transactions' id='transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119'>
+            <properties context=''>
+              <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='transactions_data.csv' table='[transactions_data#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES'>
+                  <column datatype='integer' name='id' ordinal='0' />
+                  <column datatype='datetime' name='date' ordinal='1' />
+                  <column datatype='integer' name='client_id' ordinal='2' />
+                  <column datatype='integer' name='card_id' ordinal='3' />
+                  <column datatype='string' name='amount' ordinal='4' />
+                  <column datatype='string' name='use_chip' ordinal='5' />
+                  <column datatype='integer' name='merchant_id' ordinal='6' />
+                  <column datatype='string' name='merchant_city' ordinal='7' />
+                  <column datatype='string' name='merchant_state' ordinal='8' />
+                  <column datatype='string' name='zip' ordinal='9' />
+                  <column datatype='integer' name='mcc' ordinal='10' />
+                  <column datatype='string' name='errors' ordinal='11' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119' table='[Extract].[transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119]' type='table' />
+            </properties>
+          </object>
+          <object caption='Users' id='users_data.csv_A04789C037FB4369B2F7E26C7A01C308'>
+            <properties context=''>
+              <relation connection='textscan.0nykyb30z15y8312w742e1mi4zdm' name='users_data.csv' table='[users_data#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES'>
+                  <column datatype='integer' name='id' ordinal='0' />
+                  <column datatype='integer' name='current_age' ordinal='1' />
+                  <column datatype='integer' name='retirement_age' ordinal='2' />
+                  <column datatype='integer' name='birth_year' ordinal='3' />
+                  <column datatype='integer' name='birth_month' ordinal='4' />
+                  <column datatype='string' name='gender' ordinal='5' />
+                  <column datatype='string' name='address' ordinal='6' />
+                  <column datatype='string' name='latitude' ordinal='7' />
+                  <column datatype='string' name='longitude' ordinal='8' />
+                  <column datatype='string' name='per_capita_income' ordinal='9' />
+                  <column datatype='string' name='yearly_income' ordinal='10' />
+                  <column datatype='string' name='total_debt' ordinal='11' />
+                  <column datatype='integer' name='credit_score' ordinal='12' />
+                  <column datatype='integer' name='num_credit_cards' ordinal='13' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='users_data.csv_A04789C037FB4369B2F7E26C7A01C308' table='[Extract].[users_data.csv_A04789C037FB4369B2F7E26C7A01C308]' type='table' />
+            </properties>
+          </object>
+        </objects>
+        <relationships>
+          <relationship>
+            <expression op='='>
+              <expression op='[id]' />
+              <expression op='[F1]' />
+            </expression>
+            <first-end-point object-id='transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119' />
+            <second-end-point object-id='binary_train_labels.csv_46058F3A411642488A093FD5F5CF4ABE' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[card_id]' />
+              <expression op='[id (cards_data.csv)]' />
+            </expression>
+            <first-end-point object-id='transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119' />
+            <second-end-point object-id='cards_data.csv_C9DF72CA188F4549A53663BB0BEFAEC1' />
+          </relationship>
+          <relationship>
+            <expression op='='>
+              <expression op='[client_id]' />
+              <expression op='[id (users_data.csv)]' />
+            </expression>
+            <first-end-point object-id='transactions_data.csv_E6920DEB1FA04D59AA6FE28F58F26119' />
+            <second-end-point object-id='users_data.csv_A04789C037FB4369B2F7E26C7A01C308' />
+          </relationship>
+        </relationships>
+      </object-graph>
+    </datasource>
+    <datasource caption='mcc_codes' inline='true' name='federated.0n5wy4z0axgzzg13nld200ach5fs' version='18.1'>
+      <connection class='federated'>
+        <named-connections>
+          <named-connection caption='mcc_codes' name='textscan.0pxmiuh1uindvx1cs8ohq06sg2va'>
+            <connection class='textscan' directory='C:/Users/pablo/OneDrive/Documentos/Projects/FraudDetection/data' filename='mcc_codes.csv' password='' server='' />
+          </named-connection>
+        </named-connections>
+        <relation connection='textscan.0pxmiuh1uindvx1cs8ohq06sg2va' name='mcc_codes.csv' table='[mcc_codes#csv]' type='table'>
+          <columns character-set='UTF-8' header='yes' locale='es_ES' separator=';'>
+            <column datatype='integer' name='mcc_code' ordinal='0' />
+            <column datatype='string' name='description' ordinal='1' />
+          </columns>
+        </relation>
+        <metadata-records>
+          <metadata-record class='capability'>
+            <remote-name />
+            <remote-type>0</remote-type>
+            <parent-name>[mcc_codes.csv]</parent-name>
+            <remote-alias />
+            <aggregation>Count</aggregation>
+            <contains-null>true</contains-null>
+            <attributes>
+              <attribute datatype='string' name='character-set'>&quot;UTF-8&quot;</attribute>
+              <attribute datatype='string' name='collation'>&quot;es&quot;</attribute>
+              <attribute datatype='string' name='currency'>&quot;€&quot;</attribute>
+              <attribute datatype='string' name='decimal-char'>&quot;,&quot;</attribute>
+              <attribute datatype='string' name='field-delimiter'>&quot;;&quot;</attribute>
+              <attribute datatype='string' name='header-row'>&quot;true&quot;</attribute>
+              <attribute datatype='string' name='locale'>&quot;es_ES&quot;</attribute>
+              <attribute datatype='string' name='single-char'>&quot;&quot;</attribute>
+              <attribute datatype='string' name='thousands-char'>&quot;.&quot;</attribute>
+            </attributes>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>mcc_code</remote-name>
+            <remote-type>20</remote-type>
+            <local-name>[mcc_code]</local-name>
+            <parent-name>[mcc_codes.csv]</parent-name>
+            <remote-alias>mcc_code</remote-alias>
+            <ordinal>0</ordinal>
+            <local-type>integer</local-type>
+            <aggregation>Sum</aggregation>
+            <contains-null>true</contains-null>
+            <object-id>[mcc_codes.csv_3565EA9591E145338BB71E927C5C787C]</object-id>
+          </metadata-record>
+          <metadata-record class='column'>
+            <remote-name>description</remote-name>
+            <remote-type>129</remote-type>
+            <local-name>[description]</local-name>
+            <parent-name>[mcc_codes.csv]</parent-name>
+            <remote-alias>description</remote-alias>
+            <ordinal>1</ordinal>
+            <local-type>string</local-type>
+            <aggregation>Count</aggregation>
+            <scale>1</scale>
+            <width>1073741823</width>
+            <contains-null>true</contains-null>
+            <collation flag='0' name='LES_RES' />
+            <object-id>[mcc_codes.csv_3565EA9591E145338BB71E927C5C787C]</object-id>
+          </metadata-record>
+        </metadata-records>
+      </connection>
+      <aliases enabled='yes' />
+      <column caption='mcc_codes.csv' datatype='table' name='[__tableau_internal_object_id__].[mcc_codes.csv_3565EA9591E145338BB71E927C5C787C]' role='measure' type='quantitative' />
+      <column caption='Description' datatype='string' name='[description]' role='dimension' type='nominal' />
+      <column caption='Mcc Code' datatype='integer' name='[mcc_code]' role='dimension' type='ordinal' />
+      <extract _.fcp.VConnDownstreamExtractsWithWarnings.true...user-specific='false' count='-1' enabled='false' object-id='' units='records'>
+        <connection access_mode='readonly' author-locale='es_ES' class='hyper' dbname='C:/Users/pablo/AppData/Local/Temp/TableauTemp/#TableauTemp_1gvfhda0yhytwg1dvga7n09qz4ik.hyper' default-settings='hyper' schema='Extract' sslmode='' tablename='Extract' update-time='03/29/2026 09:41:59 PM' username='tableau_internal_user'>
+          <relation name='Extract' table='[Extract].[Extract]' type='table' />
+          <metadata-records>
+            <metadata-record class='column'>
+              <remote-name>mcc_code</remote-name>
+              <remote-type>20</remote-type>
+              <local-name>[mcc_code]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>mcc_code</remote-alias>
+              <ordinal>0</ordinal>
+              <family>mcc_codes.csv</family>
+              <local-type>integer</local-type>
+              <aggregation>Sum</aggregation>
+              <approx-count>109</approx-count>
+              <contains-null>true</contains-null>
+            </metadata-record>
+            <metadata-record class='column'>
+              <remote-name>description</remote-name>
+              <remote-type>129</remote-type>
+              <local-name>[description]</local-name>
+              <parent-name>[Extract]</parent-name>
+              <remote-alias>description</remote-alias>
+              <ordinal>1</ordinal>
+              <family>mcc_codes.csv</family>
+              <local-type>string</local-type>
+              <aggregation>Count</aggregation>
+              <approx-count>108</approx-count>
+              <contains-null>true</contains-null>
+              <collation flag='0' name='LES_RES' />
+            </metadata-record>
+          </metadata-records>
+        </connection>
+      </extract>
+      <layout dim-ordering='alphabetic' measure-ordering='alphabetic' show-structure='true' />
+      <semantic-values>
+        <semantic-value key='[Country].[Name]' value='&quot;España&quot;' />
+      </semantic-values>
+      <date-options start-of-week='monday' />
+      <object-graph>
+        <objects>
+          <object caption='mcc_codes.csv' id='mcc_codes.csv_3565EA9591E145338BB71E927C5C787C'>
+            <properties context=''>
+              <relation connection='textscan.0pxmiuh1uindvx1cs8ohq06sg2va' name='mcc_codes.csv' table='[mcc_codes#csv]' type='table'>
+                <columns character-set='UTF-8' header='yes' locale='es_ES' separator=';'>
+                  <column datatype='integer' name='mcc_code' ordinal='0' />
+                  <column datatype='string' name='description' ordinal='1' />
+                </columns>
+              </relation>
+            </properties>
+            <properties context='extract'>
+              <relation name='Extract' table='[Extract].[Extract]' type='table' />
+            </properties>
+          </object>
+        </objects>
+      </object-graph>
+    </datasource>
+  </datasources>
+  <mapsources>
+    <mapsource name='Tableau' />
+  </mapsources>
+  <worksheets>
+    <worksheet name='Fraud Losses (in US$) - Geographic Distribution'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontsize='12'>&lt;</run>
+            <run bold='true' fontsize='12'>Sheet Name</run>
+            <run bold='true' fontsize='12'>&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions Data Source' name='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh' />
+          </datasources>
+          <mapsources>
+            <mapsource name='Tableau' />
+          </mapsources>
+          <datasource-dependencies datasource='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh'>
+            <column caption='Numeric_Amount' datatype='real' name='[Calculation_2744662551174823936]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='FLOAT(REPLACE(REPLACE([amount], &quot;$&quot;, &quot;&quot;), &quot;,&quot;, &quot;&quot;))' />
+            </column>
+            <column caption='Amount' datatype='string' name='[amount]' role='dimension' type='nominal' />
+            <column-instance column='[target]' derivation='Attribute' name='[attr:target:qk]' pivot='key' type='quantitative' />
+            <column caption='Merchant City' datatype='string' name='[merchant_city]' role='dimension' semantic-role='[City].[Name]' type='nominal' />
+            <column caption='Merchant State' datatype='string' name='[merchant_state]' role='dimension' semantic-role='[State].[Name]' type='nominal' />
+            <column-instance column='[merchant_city]' derivation='None' name='[none:merchant_city:nk]' pivot='key' type='nominal' />
+            <column-instance column='[merchant_state]' derivation='None' name='[none:merchant_state:nk]' pivot='key' type='nominal' />
+            <column-instance column='[Calculation_2744662551174823936]' derivation='Sum' name='[sum:Calculation_2744662551174823936:qk]' pivot='key' type='quantitative' />
+            <column caption='Target' datatype='integer' name='[target]' role='measure' type='quantitative' />
+          </datasource-dependencies>
+          <filter class='quantitative' column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[Latitude (generated)]' included-values='non-null' />
+          <filter class='quantitative' column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[Longitude (generated)]' included-values='non-null' />
+          <filter class='quantitative' column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[attr:target:qk]' included-values='in-range'>
+            <min>1</min>
+          </filter>
+          <slices>
+            <column>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[attr:target:qk]</column>
+            <column>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[Latitude (generated)]</column>
+            <column>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[Longitude (generated)]</column>
+          </slices>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='table'>
+            <format attr='omit-on-special' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:merchant_city:nk]' value='false' />
+            <format attr='break-on-special' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:merchant_city:nk]' value='false' />
+            <format attr='show-null-value-warning' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:merchant_city:nk]' value='false' />
+          </style-rule>
+          <style-rule element='map'>
+            <format attr='washout' value='0.0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <lod column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:merchant_state:nk]' />
+              <lod column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:merchant_city:nk]' />
+              <size column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[sum:Calculation_2744662551174823936:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1' />
+                <format attr='mark-color' value='#f59e0b' />
+                <format attr='has-stroke' value='true' />
+                <format attr='stroke-color' value='#334155' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[Latitude (generated)]</rows>
+        <cols>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[Longitude (generated)]</cols>
+      </table>
+      <simple-id uuid='{1DBF92A8-328C-4EDA-B23A-ADB4EEA55633}' />
+    </worksheet>
+    <worksheet name='Hoja 3'>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions Data Source' name='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh'>
+            <column caption='Numeric_Amount' datatype='real' name='[Calculation_2744662551174823936]' role='measure' type='quantitative'>
+              <calculation class='tableau' formula='FLOAT(REPLACE(REPLACE([amount], &quot;$&quot;, &quot;&quot;), &quot;,&quot;, &quot;&quot;))' />
+            </column>
+            <column caption='Amount' datatype='string' name='[amount]' role='dimension' type='nominal' />
+            <column caption='Mcc' datatype='integer' name='[mcc]' role='dimension' type='ordinal' />
+            <column-instance column='[mcc]' derivation='None' name='[none:mcc:ok]' pivot='key' type='ordinal' />
+            <column-instance column='[Calculation_2744662551174823936]' derivation='Sum' name='[sum:Calculation_2744662551174823936:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <computed-sort column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:mcc:ok]' direction='DESC' using='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[sum:Calculation_2744662551174823936:qk]' />
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='label'>
+            <format attr='text-orientation' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:mcc:ok]' value='0' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <text column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[sum:Calculation_2744662551174823936:qk]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-labels-show' value='true' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[none:mcc:ok]</rows>
+        <cols />
+      </table>
+      <simple-id uuid='{B5B75D29-031C-47CE-B840-C970C061FF33}' />
+    </worksheet>
+    <worksheet name='Total Transactions &amp; Fraud Ratio - Time Evolution'>
+      <layout-options>
+        <title>
+          <formatted-text>
+            <run bold='true' fontsize='12'>&lt;</run>
+            <run bold='true' fontsize='12'>Sheet Name</run>
+            <run bold='true' fontsize='12'>&gt;</run>
+          </formatted-text>
+        </title>
+      </layout-options>
+      <table>
+        <view>
+          <datasources>
+            <datasource caption='Transactions Data Source' name='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh' />
+          </datasources>
+          <datasource-dependencies datasource='federated.0q1nb8p0nmdn9e18tdexd1gzmtoh'>
+            <column caption='100*SUM([Target])/COUNT([Id])' datatype='real' name='[Calculation_2744662551987933186]' role='measure' type='quantitative' user:unnamed='Hoja 2'>
+              <calculation class='tableau' formula='100*SUM([target])/COUNT([id])' />
+            </column>
+            <column-instance column='[id]' derivation='Count' name='[cnt:id:qk]' pivot='key' type='quantitative' />
+            <column caption='Date' datatype='datetime' name='[date]' role='dimension' type='ordinal' />
+            <column caption='Id' datatype='integer' name='[id]' role='dimension' type='ordinal' />
+            <column caption='Target' datatype='integer' name='[target]' role='measure' type='quantitative' />
+            <column-instance column='[date]' derivation='Year-Trunc' name='[tyr:date:qk]' pivot='key' type='quantitative' />
+            <column-instance column='[Calculation_2744662551987933186]' derivation='User' name='[usr:Calculation_2744662551987933186:qk]' pivot='key' type='quantitative' />
+          </datasource-dependencies>
+          <aggregation value='true' />
+        </view>
+        <style>
+          <style-rule element='axis'>
+            <format attr='title' class='0' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[cnt:id:qk]' scope='rows' value='Total Transactions' />
+            <format attr='title' class='0' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[usr:Calculation_2744662551987933186:qk]' scope='rows' value='Fraud (%)' />
+            <encoding attr='space' class='0' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[usr:Calculation_2744662551987933186:qk]' field-type='quantitative' fold='true' scope='rows' type='space' />
+            <format attr='title' class='0' field='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[tyr:date:qk]' scope='cols' value='Year' />
+          </style-rule>
+          <style-rule element='cell'>
+            <format attr='color' value='#f59e0b' />
+          </style-rule>
+        </style>
+        <panes>
+          <pane selection-relaxation-option='selection-relaxation-allow'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <encodings>
+              <color column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[:Measure Names]' />
+            </encodings>
+          </pane>
+          <pane id='1' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[cnt:id:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Bar' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='size' value='1.9890055656433105' />
+                <format attr='has-stroke' value='true' />
+                <format attr='mark-transparency' value='129' />
+              </style-rule>
+            </style>
+          </pane>
+          <pane id='2' selection-relaxation-option='selection-relaxation-allow' y-axis-name='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[usr:Calculation_2744662551987933186:qk]'>
+            <view>
+              <breakdown value='auto' />
+            </view>
+            <mark class='Automatic' />
+            <mark-sizing mark-sizing-setting='marks-scaling-off' />
+            <encodings>
+              <color column='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[:Measure Names]' />
+            </encodings>
+            <style>
+              <style-rule element='mark'>
+                <format attr='mark-markers-mode' value='all' />
+                <format attr='size' value='1.4832596778869629' />
+              </style-rule>
+            </style>
+          </pane>
+        </panes>
+        <rows>([federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[cnt:id:qk] + [federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[usr:Calculation_2744662551987933186:qk])</rows>
+        <cols>[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[tyr:date:qk]</cols>
+      </table>
+      <simple-id uuid='{778BB702-2B3F-4A28-99C4-22413401D165}' />
+    </worksheet>
+  </worksheets>
+  <dashboards>
+    <dashboard enable-sort-zone-taborder='true' name='Dashboard 1'>
+      <style />
+      <size maxheight='1080' maxwidth='1080' minheight='1080' minwidth='1080' sizing-mode='range' />
+      <zones>
+        <zone h='100000' id='4' type-v2='layout-basic' w='100000' x='0' y='0'>
+          <zone h='98518' id='15' param='horz' type-v2='layout-flow' w='98518' x='741' y='741'>
+            <zone h='98518' id='3' param='vert' type-v2='layout-flow' w='98518' x='741' y='741'>
+              <zone fixed-size='254' h='24260' id='5' is-fixed='true' type-v2='text' w='98518' x='741' y='741'>
+                <formatted-text>
+                  <run fontsize='16'>FRAUD ANALYTICS - DASHBOARD</run>
+                </formatted-text>
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+              <zone h='38472' id='12' param='horz' type-v2='layout-flow' w='98518' x='741' y='25001'>
+                <zone h='38472' id='13' name='Fraud Losses (in US$) - Geographic Distribution' w='98518' x='741' y='25001'>
+                  <layout-cache minheight='249' minwidth='202' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone h='35786' id='6' name='Total Transactions &amp; Fraud Ratio - Time Evolution' w='98518' x='741' y='63473'>
+                <layout-cache minheight='220' minwidth='302' type-h='scalable' type-w='scalable' />
+                <zone-style>
+                  <format attr='border-color' value='#000000' />
+                  <format attr='border-style' value='none' />
+                  <format attr='border-width' value='0' />
+                  <format attr='margin' value='4' />
+                </zone-style>
+              </zone>
+            </zone>
+          </zone>
+          <zone-style>
+            <format attr='border-color' value='#000000' />
+            <format attr='border-style' value='none' />
+            <format attr='border-width' value='0' />
+            <format attr='margin' value='8' />
+          </zone-style>
+        </zone>
+      </zones>
+      <devicelayouts>
+        <devicelayout auto-generated='true' name='Phone'>
+          <size maxheight='700' minheight='700' sizing-mode='vscroll' />
+          <zones>
+            <zone h='100000' id='19' type-v2='layout-basic' w='100000' x='0' y='0'>
+              <zone h='84000' id='18' param='vert' type-v2='layout-flow' w='84000' x='8000' y='8000'>
+                <zone fixed-size='254' h='24260' id='5' type-v2='text' w='98518' x='741' y='741'>
+                  <formatted-text>
+                    <run fontsize='16'>FRAUD ANALYTICS - DASHBOARD</run>
+                  </formatted-text>
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='38472' id='13' is-fixed='true' name='Fraud Losses (in US$) - Geographic Distribution' w='98518' x='741' y='25001'>
+                  <layout-cache minheight='249' minwidth='202' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+                <zone fixed-size='280' h='35786' id='6' is-fixed='true' name='Total Transactions &amp; Fraud Ratio - Time Evolution' w='98518' x='741' y='63473'>
+                  <layout-cache minheight='220' minwidth='302' type-h='scalable' type-w='scalable' />
+                  <zone-style>
+                    <format attr='border-color' value='#000000' />
+                    <format attr='border-style' value='none' />
+                    <format attr='border-width' value='0' />
+                    <format attr='margin' value='4' />
+                    <format attr='padding' value='0' />
+                  </zone-style>
+                </zone>
+              </zone>
+              <zone-style>
+                <format attr='border-color' value='#000000' />
+                <format attr='border-style' value='none' />
+                <format attr='border-width' value='0' />
+                <format attr='margin' value='8' />
+              </zone-style>
+            </zone>
+          </zones>
+        </devicelayout>
+      </devicelayouts>
+      <simple-id uuid='{F1C75D4E-F591-4FD1-A85C-87F7A0E591D4}' />
+    </dashboard>
+  </dashboards>
+  <windows source-height='75'>
+    <window class='worksheet' name='Total Transactions &amp; Fraud Ratio - Time Evolution'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='174'>
+            <card pane-specification-id='1' param='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[:Measure Names]' type='color' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{3F82F04B-1483-40A7-BD09-DEECFEF3ADB2}' />
+    </window>
+    <window class='worksheet' name='Fraud Losses (in US$) - Geographic Distribution'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+        <edge name='right'>
+          <strip size='174'>
+            <card pane-specification-id='0' param='[federated.0q1nb8p0nmdn9e18tdexd1gzmtoh].[sum:Calculation_2744662551174823936:qk]' type='size' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{D9F2C2C2-EB55-490A-AE0A-900E7188C7FD}' />
+    </window>
+    <window class='worksheet' maximized='true' name='Hoja 3'>
+      <cards>
+        <edge name='left'>
+          <strip size='160'>
+            <card type='pages' />
+            <card type='filters' />
+            <card type='marks' />
+          </strip>
+        </edge>
+        <edge name='top'>
+          <strip size='2147483647'>
+            <card type='columns' />
+          </strip>
+          <strip size='2147483647'>
+            <card type='rows' />
+          </strip>
+          <strip size='30'>
+            <card type='title' />
+          </strip>
+        </edge>
+      </cards>
+      <simple-id uuid='{EC6C972D-A3E8-45DB-9051-FA3075E95909}' />
+    </window>
+    <window class='dashboard' name='Dashboard 1'>
+      <viewpoints>
+        <viewpoint name='Fraud Losses (in US$) - Geographic Distribution'>
+          <zoom type='entire-view' />
+        </viewpoint>
+        <viewpoint name='Total Transactions &amp; Fraud Ratio - Time Evolution'>
+          <zoom type='entire-view' />
+        </viewpoint>
+      </viewpoints>
+      <active id='-1' />
+      <simple-id uuid='{3567548F-C2A0-4BD6-980E-7C1927955981}' />
+    </window>
+  </windows>
+</workbook>
