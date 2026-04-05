@@ -28,10 +28,10 @@ Table containing card transactions.
 - **use_chip (type: string)** = type of transaction (Swift, Online) [0 nulls].
 - **merchant_id (type: integer)** = merchant's identifier [0 nulls].
 - **merchant_city (type: string)** = merchant's city [0 nulls].
-- **merchant_state (type: string)** = merchant's state [0 nulls].
-- **zip (type: integer)** = merchant's zip code [! 1.652.706 nulls].
+- **merchant_state (type: string)** = merchant's state [1.563.700 nulls].
+- **zip (type: integer)** = merchant's zip code [1.652.706 nulls].
 - **mcc (type: integer)** = merchant's category code, a four-digit number assigned by card networks to classify a business by the type of goods or services it provides (decoder in "mcc.json") [0 nulls].
-- **errors (type: string)** = indicates any error that might have ocurred during the transaction [0 nulls].
+- **errors (type: string)** = indicates any error that might have ocurred during the transaction [13.094.522 nulls].
 
 ###### Grouping fields
 *These are fields that can be used to group data*

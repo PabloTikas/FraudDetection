@@ -1,0 +1,14 @@
+{
+    "best_value": 0.8067433115997723,
+    "best_params": {
+        "max_depth": 6,
+        "min_child_weight": 1,
+        "lambda": 1.9783706595898765,
+        "alpha": 0.014951869195787563,
+        "subsample": 0.8805746267995835,
+        "colsample_bytree": 0.7395896462438982,
+        "learning_rate": 0.20086326294143073,
+        "gamma": 0.028575013457800526,
+        "scale_pos_weight": 79.41785754956845
+    }
+}

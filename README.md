@@ -6,12 +6,18 @@ An end-to-end machine learning project for fraud detection in financial transact
 **Fraud Analysis Dashboard:** https://public.tableau.com/app/profile/pablo.tikas.pueyo/viz/FraudDashboard_17748659627020/Dashboard1
 
 
+## Use of Artificial Intelligence
+
 ## Data source
 **Financial Transactions Dataset: Analytics (Kaggle)**
 
 *This comprehensive financial dataset created by Caixabank Tech for the 2024 AI Hackathon combines transaction records, customer information, and card data from a banking institution, spanning across the 2010s decade. The dataset is designed for multiple analytical purposes, including synthetic fraud detection, customer behavior analysis, and expense forecasting.*
 
 https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets
+
+**Observation:** User and card attributes are static snapshots, not historical records. Features like `current_age`, `yearly_income`, and `per_capita_income` 
+may not reflect their actual values at transaction time. Additionally, engineered features such as `avg_amount_cli`, `trans_count_cli`, and `years_since_pin_change` 
+are computed using the entire dataset, introducing potential data leakage. These limitations are acknowledged and accepted throughout the project.
 
 ## Phase 1: Exploratory Data Analysis
 
@@ -47,6 +53,32 @@ https://www.kaggle.com/datasets/computingvictor/transactions-fraud-datasets
 
 ### Phase Goals
 
+- Preprocess and prepare the dataset for modeling.
+- Define a fraud-appropiate evaluation metric.
+- Train and compare multiple classification models, tracking experiments systematically to ensure reproducibility and fair comparison.
+- Select the best-performing model and optimize it through hyperparameter tuning.
+- Evaluate final model performance on the test set and create a comprehensive Phase Report.
+
 ### Tech Stack
 
+- **Jupyter Notebook** on **VSCode** as the development environment.
+- **UV** for project dependencies management.
+- Python Libraries:
+    - **pandas** for Data Processing and Feature Engineering.
+    - **scikit-learn** for Data Splitting and Modeling.
+    - **MLFlow** for Experiment Tracking.
+    - **optuna** for Hyperparameter Optimization.
+    - **matplotlib** and **seaborn** for Visualization and Reporting.
+
 ### Phase Journal
+
+**31st of March, 2026**
+- Completed project setup: created a virtual environment and installed libraries.
+- Completed Data Cleaning phase:
+    - Consolidated all raw tables into a single, unified structure.
+    - Converted to appropiate data types.
+    - Filtered rare values and filled nulls.
+    - Incorporated new features.
+
+
+
