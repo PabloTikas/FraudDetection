@@ -14,7 +14,7 @@ import json
 
 
 
-def tune_model(X_train: pd.DataFrame, y_train: pd.Series) -> tuple[float, dict]:
+def tune_model(X_train: pd.DataFrame, y_train: pd.Series) -> None:
     start_time = time.time()
     try:
         # Subsample data for tuning (for limited computational power)

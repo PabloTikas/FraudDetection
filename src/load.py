@@ -4,7 +4,7 @@ import sys
 import time
 from _utils import column_summary
 
-def load_data(data_path: str) -> pd.DataFrame:
+def load_data(data_path: str) -> None:
 
     start_time = time.time()
     raw_dir = Path(data_path) / 'raw'

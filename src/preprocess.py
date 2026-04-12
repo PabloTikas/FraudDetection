@@ -4,7 +4,7 @@ import sys
 import time
 from _utils import column_summary
 
-def preprocess_data(data_path: str) -> pd.DataFrame:
+def preprocess_data(data_path: str) -> None:
     
     start_time = time.time()
     # Load clean dataset
