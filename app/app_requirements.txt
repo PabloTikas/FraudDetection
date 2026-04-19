@@ -1,0 +1,15 @@
+# Web framework + ASGI server
+fastapi==0.135.2
+uvicorn==0.42.0
+pydantic==2.12.5
+
+# Frontend
+gradio==6.12.0
+requests==2.33.1
+
+# Model runtime
+mlflow-skinny==3.10.1
+xgboost==3.2.0
+pandas==2.3.3
+numpy==2.4.4
+scikit-learn==1.8.0
