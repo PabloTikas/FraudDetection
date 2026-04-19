@@ -1,0 +1,47 @@
+# Python
+__pycache__
+*.pyc
+*.pyo
+.venv/
+.venv-test/
+
+# IDE
+.vscode/
+
+# Git
+
+.git/
+.gitignore
+
+# Data
+data/
+
+# MLFlow
+mlruns/
+mlflow.db
+
+# Notebooks
+notebooks/
+
+# Outputs
+outputs/
+
+# Reports
+reports/
+
+# SQL
+sql/
+
+# SRC
+src/
+
+# Environment
+.env
+*.env
+
+# Readme
+README.md
+
+# Deps
+requirements.txt
+requirements-lock.txt
