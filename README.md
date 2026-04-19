@@ -13,7 +13,7 @@ This project walks through the full lifecycle of a machine learning product, fro
 - **Phase 5 — Containerization:** Writing a Dockerfile from scratch — layer ordering for cache efficiency, system-level dependencies for ML wheels, and exposing multiple ports for a multi-service app.
 - **Phase 6 — Deployment:** Deploying a containerized ML app to Hugging Face Spaces and validating the end-to-end flow in a production-like environment.
 
-**Live demo:** [Hugging Face Space — link placeholder]
+**Live demo:** https://huggingface.co/spaces/PabloTikas/FraudDetectionApp
 
 **Fraud Analysis Dashboard:** https://public.tableau.com/app/profile/pablo.tikas.pueyo/viz/FraudDashboard_17748659627020/Dashboard1
 

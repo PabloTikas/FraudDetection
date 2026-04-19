@@ -3,7 +3,7 @@ from pathlib import Path
 from pydantic import BaseModel, Field, field_validator, FieldValidationInfo
 from fastapi import FastAPI
 from typing import Literal
-from model.model import predict_pipeline
+from model import predict_pipeline
 
 
 with open(Path(__file__).parent / 'valid_categories.json') as f:

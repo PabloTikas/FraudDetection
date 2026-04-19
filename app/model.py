@@ -1,11 +1,16 @@
-import mlflow
-import mlflow.xgboost
-from pathlib import Path
+import pickle
 import pandas as pd
 
-ARTIFACT_PATH = (Path(__file__).parent.parent / 'model' / 'artifacts').resolve(strict=True)
+file_name = 'serving_model.pkl'
 
-model = mlflow.xgboost.load_model(ARTIFACT_PATH)
+
+try:
+    with open(file_name, 'rb') as f:
+        model = pickle.load(f)
+except Exception as e:
+    print(f"Error loading model: {e}")
+    model = None
+
 
 FEATURE_ORDER = [
     'amount', 'use_chip', 'merchant_city', 'errors', 'current_age', 'gender',
